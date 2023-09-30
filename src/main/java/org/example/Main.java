@@ -1,4 +1,6 @@
 package org.example;
+import model.Producto;
+
 import java.util.Scanner;
 
 public class Main {
@@ -32,6 +34,20 @@ public class Main {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
 
         solicitarImprimir();
+
+
+
+        // importación de la clase Producto a main.
+
+        Producto producto = new Producto("Leche Entera Alpina", 3100, 30);
+
+        System.out.println("***********************************************************************************************************");
+        System.out.println("métodos de la clase Producto");
+
+        System.out.println("El producto está sin inventario: " + producto.estaSinInventario());
+        System.out.println("El precio del producto es mayor a 2500: " + producto.esMayorQue(2500));
+        System.out.println("El precio del producto es menor o igual a 3000: " + producto.esMenorIgualQue(3000));
+        System.out.println("El nombre del producto contiene la palabra 'Leche': " + producto.contienePalabra("Leche"));
     }
 
 
