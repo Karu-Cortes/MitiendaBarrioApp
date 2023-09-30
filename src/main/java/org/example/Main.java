@@ -31,11 +31,7 @@ public class Main {
         System.out.println("Foto del producto: " + urlFoto);
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
 
-        int opcion;
-        do {
-            opcion = construirMenu();
-            ejecutarOpcion(opcion);
-        } while (opcion != 5);
+        solicitarImprimir(1);
     }
 
 
@@ -77,7 +73,16 @@ public class Main {
         }
         }
 
+
+    public static void solicitarImprimir(int opcion){
+
+        do {
+            opcion = construirMenu();
+            ejecutarOpcion(opcion);
+        } while (opcion != 5);
     }
+
+}
 
 
 
