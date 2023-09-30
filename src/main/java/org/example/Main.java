@@ -31,7 +31,7 @@ public class Main {
         System.out.println("Foto del producto: " + urlFoto);
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
 
-        solicitarImprimir(1);
+        solicitarImprimir();
     }
 
 
@@ -54,28 +54,35 @@ public class Main {
         switch (opcion) {
             case 1:
                 System.out.println("Listando productos...");
+                System.out.println(" ");
                 break;
             case 2:
                 System.out.println("Agregando producto...");
+                System.out.println(" ");
                 break;
             case 3:
                 System.out.println("Modificando producto...");
+                System.out.println(" ");
                 break;
             case 4:
                 System.out.println("Eliminando producto...");
+                System.out.println(" ");
                 break;
             case 5:
                 System.out.println("Saliendo del menú...");
+                System.out.println(" ");
                 break;
             default:
                 System.out.println("Opción no válida.");
+                System.out.println(" ");
                 break;
         }
         }
 
 
-    public static void solicitarImprimir(int opcion){
+    public static void solicitarImprimir(){
 
+        int opcion;
         do {
             opcion = construirMenu();
             ejecutarOpcion(opcion);
