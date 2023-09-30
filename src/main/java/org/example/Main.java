@@ -1,7 +1,9 @@
 package org.example;
 import model.Producto;
-
 import java.util.Scanner;
+import model.ProductsArray;
+
+
 
 public class Main {
 
@@ -12,7 +14,7 @@ public class Main {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
 
         // variables inventario
-        String nombreProducto = "Leche Entera Alpina";
+        String nombresProducto = "Leche Entera Alpina";
         String tipoEmpaque = "Bolsa";
         double medida = 1.100;
         String tipoMedida = "ml";
@@ -24,7 +26,7 @@ public class Main {
 
 
         System.out.println(" ");
-        System.out.println("Nombre del producto: " + nombreProducto);
+        System.out.println("Nombre del producto: " + nombresProducto);
         System.out.println("Descripción de la producto: " + tipoEmpaque + " " + medida + " " + tipoMedida + " ");
         System.out.println("Categoria del producto: " + categoria);
         System.out.println("Etiqueta del producto: " + etiqueta);
@@ -33,8 +35,10 @@ public class Main {
         System.out.println("Foto del producto: " + urlFoto);
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++");
 
+        System.out.println(" ");
+        System.out.println("***********************************************************************************************************");
         solicitarImprimir();
-
+        System.out.println(" ");
 
 
         // importación de la clase Producto a main.
@@ -48,6 +52,20 @@ public class Main {
         System.out.println("El precio del producto es mayor a 2500: " + producto.esMayorQue(2500));
         System.out.println("El precio del producto es menor o igual a 3000: " + producto.esMenorIgualQue(3000));
         System.out.println("El nombre del producto contiene la palabra 'Leche': " + producto.contienePalabra("Leche"));
+        System.out.println(" ");
+
+
+        System.out.println("***********************************************************************************************************");
+
+        ProductsArray nombreProducto = new ProductsArray();
+
+        System.out.println("Productos que comienzan por la letra 'Y':");
+        nombreProducto.mostrarProductos('Y');
+        System.out.println(" ");
+
+        System.out.println("Lista de productos en orden alfabético:");
+        nombreProducto.imprimirListaOrdenada();
+
     }
 
 

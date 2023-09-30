@@ -59,4 +59,10 @@ public class Producto {
     public boolean contienePalabra(String palabra) {
         return this.nombre.contains(palabra);
     }
+
+    public void mostrarProductos(char a) {
+    }
+
+    public void imprimirListaOrdenada() {
+    }
 }
