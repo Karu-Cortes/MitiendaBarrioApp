@@ -54,9 +54,6 @@ public class Administracion {
                         case "7":
                             productoEncontrado.setCategoriaProducto(nuevoValor);
                             break;
-                        case "8":
-                            productoEncontrado.setCantidadProducto(Double.valueOf(nuevoValor));
-                            break;
 
                         default:
                             System.out.println("Opción no válida.");

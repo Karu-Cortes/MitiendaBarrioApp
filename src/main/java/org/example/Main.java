@@ -203,9 +203,8 @@ public class Main {
         System.out.println("INGRESA  LA CATEGORIA DEL PRODUCTO : ");
         String  categoriaProducto =  scanner.nextLine();
 
-        System.out.println("INGRESA LA CANTIDAD DEL PRODUCTO: ");
-        Double cantidadProducto = scanner.nextDouble();
-        scanner.nextLine();
+
+        Double cantidadProducto = 0.0;
         Producto producto = new Producto(codigoProducto, nombreProducto, marcaProducto, tipoEmpaque,medidaProducto,tipoMedidaProducto,etiquetaProducto,categoriaProducto,cantidadProducto) {
         };
         administracion.agregarProducto(producto);
@@ -222,6 +221,12 @@ public class Main {
         scanner.nextLine();
 
         Optional<Producto> productoEncontrado = administracion.buscarProducto(codigoProducto);
+        if (productoEncontrado.isPresent()) {
+            System.out.println(productoEncontrado.get());
+            System.out.println(" ");
+        } else {
+            System.out.println("Producto con eL ID: " + codigoProducto  + " no encontrado");
+        }
 
         if (productoEncontrado.isPresent()) {
             System.out.println("Seleccione el campo del producto que desee modificar: ");
@@ -232,12 +237,13 @@ public class Main {
             System.out.println("5. Tipo de medida");
             System.out.println("6. Etiqueta Producto");
             System.out.println("7. Categoria Producto");
-            System.out.println("8. Cantidad");
+
 
 
             String opcion = scanner.nextLine();
 
-
+            System.out.println(" ");
+            System.out.println("Ingresa la información a modificar: ");
             String nuevoValor = scanner.nextLine();
 
             Optional<Producto> productoModificado = administracion.modificarProducto(
@@ -248,6 +254,8 @@ public class Main {
 
             if (productoModificado.isPresent()) {
                 System.out.println("Producto modificado exitosamente.");
+                System.out.println(" ");
+                System.out.println(productoEncontrado.get());
                 System.out.println(" ");
             } else {
                 System.out.println("No se pudo modificar el producto.");
@@ -308,6 +316,7 @@ public class Main {
     }
     public static int ejecutarMenu()
     {
+        System.out.println(" ");
         System.out.println("Por favor digita una opcion del siguiente menú");
         System.out.println("±----------------------------------------±");
         System.out.println("|   Administrador Mi Tienda de Barrio    |");
