@@ -158,7 +158,7 @@ public class Main {
                 case 7 :
                     agregarVenta(administracion);
                 case 8 :
-                    modificarCompra(administracion);
+                    modificarVenta(administracion);
                     break;
                 case 9 :
                     buscarVenta(administracion);
@@ -218,24 +218,46 @@ public class Main {
 
         System.out.println("INGRESA EL CODIGO DEL PRODUCTO A BUSCAR : ");
         Scanner scanner = new Scanner(System.in);
-        String opciones = scanner.next();
+        String codigoProducto = scanner.next();
         scanner.nextLine();
 
+        Optional<Producto> productoEncontrado = administracion.buscarProducto(codigoProducto);
 
-        /*Optional<Producto> productoOptional = administracion.modificarProducto(codigoProducto,)
-        if (productoOptional.isPresent()) {
-            System.out.println(productoOptional.get());
-            switch (opciones)
-            {
-                case 1:
+        if (productoEncontrado.isPresent()) {
+            System.out.println("Seleccione el campo del producto que desee modificar: ");
+            System.out.println("1. Nombre del Producto");
+            System.out.println("2. Marca del Producto");
+            System.out.println("3. Tipo de Empaque");
+            System.out.println("4. Medida");
+            System.out.println("5. Tipo de medida");
+            System.out.println("6. Etiqueta Producto");
+            System.out.println("7. Categoria Producto");
+            System.out.println("8. Cantidad");
+
+
+            String opcion = scanner.nextLine();
+
+
+            String nuevoValor = scanner.nextLine();
+
+            Optional<Producto> productoModificado = administracion.modificarProducto(
+                    codigoProducto,
+                    opcion,
+                    nuevoValor
+            );
+
+            if (productoModificado.isPresent()) {
+                System.out.println("Producto modificado exitosamente.");
+                System.out.println(" ");
+            } else {
+                System.out.println("No se pudo modificar el producto.");
+                System.out.println(" ");
             }
         } else {
-            System.out.println("Producto con eL ID: " + codigoProducto  + " no encontrado");
+            System.out.println("Producto no encontrado.");
+            System.out.println(" ");
         }
-       Optional<Producto>  productoOptional = administracion.productList.stream()
-                .filter(producto -> producto.getCodigoProducto().equals(codigoProducto))
-                .findFirst();
-*/
+
 
     }
 
