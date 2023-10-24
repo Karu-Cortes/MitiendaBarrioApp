@@ -14,6 +14,14 @@ public  class Producto  {
     private Double cantidadProducto;
     private List<Producto> productoList = new ArrayList<>();
 
+
+    public Producto(String codigoProducto, String nombreProducto, String marcaProducto, Double cantidadProducto) {
+        this.codigoProducto = codigoProducto;
+        this.nombreProducto = nombreProducto;
+        this.marcaProducto = marcaProducto;
+        this.cantidadProducto = cantidadProducto;
+    }
+
     public Producto(String codigoProducto, String nombreProducto, String marcaProducto, String tipoEmpaque, Double medidaProducto, String tipoMedidaProducto, String etiquetaProducto, String categoriaProducto, Double cantidadProducto) {
         this.codigoProducto = codigoProducto;
         this.nombreProducto = nombreProducto;
@@ -97,18 +105,17 @@ public  class Producto  {
 
     @Override
         public String toString () {
-            return "Producto:" +
-                    "codigoProducto='" + codigoProducto + '\'' +
-                    ", nombreProducto='" + nombreProducto + '\'' +
-                    ", marcaProducto='" + marcaProducto + '\'' +
-                    ", tipoEmpaque='" + tipoEmpaque + '\'' +
-                    ", medidaProducto=" + medidaProducto +
-                    ", tipoMedidaProducto='" + tipoMedidaProducto + '\'' +
-                    ", etiquetaProducto='" + etiquetaProducto + '\'' +
-                    ", categoriaProducto='" + categoriaProducto + '\'' +
-                    ", cantidadProducto=" + cantidadProducto +
-                    ", productoList=" + productoList +
-                    '}';
+            return "Producto: " +
+                    "codigo Producto ='" + codigoProducto + '\'' +
+                    ", nombre Producto ='" + nombreProducto + '\'' +
+                    ", marca Producto ='" + marcaProducto + '\'' +
+                    ", tipo Empaque ='" + tipoEmpaque + '\'' +
+                    ", medida Producto =" + medidaProducto +
+                    ", tipo Medida Producto ='" + tipoMedidaProducto + '\'' +
+                    ", etiqueta Producto ='" + etiquetaProducto + '\'' +
+                    ", categoria Producto ='" + categoriaProducto + '\'' +
+                    ", cantidad Producto =" + cantidadProducto +
+                    " ";
         }
 
 

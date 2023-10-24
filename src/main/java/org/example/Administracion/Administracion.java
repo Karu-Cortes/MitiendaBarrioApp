@@ -63,6 +63,13 @@ public class Administracion {
                 })
                 .orElse(Optional.empty());
     }
+
+    public void agregarCompra(Compra compra)
+    {
+        if (!compraList.contains(compra)) {
+            compraList.add(compra);
+        }
+    }
 }
 
 
