@@ -289,19 +289,17 @@ public class Main {
         //REGISTRAR NUEVA COMPRA DE PRODUCTO
         Scanner scanner = new Scanner(System.in);
         System.out.println("INGRESA  LA FECHA DE LA COMPRA: ");
-        String fechaCompra =  scanner.next();
-        scanner.nextLine();
+        String fechaCompra =  scanner.nextLine();
         System.out.println("INGRESA EL CODIGO DE LA COMPRA : ");
-        String idCompra = scanner.next();
+        String idCompra = scanner.nextLine();
         System.out.println("INGRESA EL NIT DEL PROVEEDOR : ");
         int nitProveedor = scanner.nextInt();
         scanner.nextLine();
         System.out.println("INGRESA EL NOMBRE DEL PROVEEDOR: ");
-        String nombreProveedor = scanner.next();
-        scanner.nextLine();
+        String nombreProveedor = scanner.nextLine();
         System.out.println("INGRESA EL CODIGO DEL PRODUCTO A COMPRAR: ");
-        String codigoProducto = scanner.next();
-        scanner.nextLine();
+        String codigoProducto = scanner.nextLine();
+
 
         Optional<Producto> productoOptional = administracion.buscarProducto(codigoProducto );
         if (productoOptional.isPresent() ) {
@@ -327,12 +325,63 @@ public class Main {
 
 
     }
-    public static void modificarCompra(Administracion administracion){
+        public static void modificarCompra(Administracion administracion) {
+            System.out.println("INGRESA EL CODIGO DE LA COMPRA A MODIFICAR : ");
+            Scanner scanner = new Scanner(System.in);
+            String codigoCompra = scanner.nextLine();
 
-    }
-    public static void buscarCompra(Administracion administracion){
 
-    }
+            Optional<Compra> compraEncontrada = administracion.buscarCompra(codigoCompra);
+            if (compraEncontrada.isPresent()) {
+                Compra compra = compraEncontrada.get();
+                System.out.println("Compra encontrada:");
+                System.out.println(compra);
+
+
+                if (compraEncontrada.isPresent()) {
+                    System.out.println("Seleccione el campo de la compra  que deseas modificar: ");
+
+                    System.out.println("1. Nombre del Proveedor");
+                    System.out.println("2. Nit del Proveedor");
+                    System.out.println("3. Producto, cantidad y valor unitario");
+
+                    int opcion = scanner.nextInt();
+
+                    String nuevoValor = scanner.nextLine();
+
+                    Optional<Compra> compramodificada = administracion.modificarCompra(codigoCompra, opcion, nuevoValor);
+                    if (compramodificada.isPresent()) {
+                        System.out.println("Producto modificado exitosamente.");
+                        System.out.println(compraEncontrada.get());
+                    } else {
+                        System.out.println("No se pudo modificar el producto.");
+
+                    }
+                } else {
+                    System.out.println("Producto no encontrado.");
+                    System.out.println(" ");
+                }
+            }
+        }
+
+
+    public static void buscarCompra (Administracion administracion){
+
+            System.out.println("INGRESA EL CODIGO DE LA COMPRA A BUSCAR : ");
+            Scanner scanner = new Scanner(System.in);
+            String idCompra = scanner.next();
+            scanner.nextLine();
+
+            Optional<Compra> compraOptional = administracion.buscarCompra(idCompra);
+            if (compraOptional.isPresent()) {
+                System.out.println(compraOptional.get());
+            } else {
+                System.out.println("Producto con eL ID: " + idCompra  + " no encontrado");
+            }
+
+        }
+
+
     public static void agregarVenta(Administracion administracion){
 
     }
