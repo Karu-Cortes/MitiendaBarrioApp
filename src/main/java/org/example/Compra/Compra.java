@@ -11,10 +11,10 @@ public class Compra {
     String fechaCompra;
     private Double valorUnitario;
     private Double valorTotal;
-
     private double cantidad;
     private Producto productosCompra;
-    public Compra(String idCompra, String nombreProveedor, String fechaCompra, Double valorUnitario, Double valorTotal, Double cantidad, Integer nitProveedor, Producto productosCompra) {
+    public Compra(String idCompra, String nombreProveedor, String fechaCompra, Double valorUnitario, Double valorTotal,
+                  Double cantidad, Integer nitProveedor, Producto productosCompra) {
         this.idCompra = idCompra;
         this.nombreProveedor = nombreProveedor;
         this.fechaCompra = fechaCompra;

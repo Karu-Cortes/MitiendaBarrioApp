@@ -3,7 +3,7 @@ package org.example.Producto;
 import java.util.*;
 
 public  class Producto  {
-    final String codigoProducto ;
+    private String codigoProducto ;
     private String nombreProducto;
     private String marcaProducto;
     private String tipoEmpaque;
@@ -38,6 +38,8 @@ public  class Producto  {
     public String getCodigoProducto() {
         return codigoProducto;
     }
+
+    public void setCodigoProducto(String codigoProducto) {this.codigoProducto = codigoProducto;}
 
     public String getNombreProducto() {
         return nombreProducto;
