@@ -9,8 +9,10 @@ public  class Producto  {
     private String tipoEmpaque;
     private Double medidaProducto;
     private  String tipoMedidaProducto;
+
     private String etiquetaProducto;
     private String categoriaProducto;
+
     private Double cantidadProducto;
     private List<Producto> productoList = new ArrayList<>();
 
