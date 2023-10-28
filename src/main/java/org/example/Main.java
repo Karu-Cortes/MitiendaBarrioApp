@@ -7,6 +7,9 @@ import org.example.Compra.Compra;
 import org.example.Producto.Producto;
 import org.example.Venta.Venta;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -288,8 +291,8 @@ public class Main {
 
         //REGISTRAR NUEVA COMPRA DE PRODUCTO
         Scanner scanner = new Scanner(System.in);
-        System.out.println("INGRESA  LA FECHA DE LA COMPRA: ");
-        String fechaCompra =  scanner.nextLine();
+        System.out.println("INGRESA  LA FECHA DE LA COMPRA (yyyy-MM-dd):");
+        String fechaCompraStr =  scanner.nextLine();
         System.out.println("INGRESA EL CODIGO DE LA COMPRA : ");
         String idCompra = scanner.nextLine();
         System.out.println("INGRESA EL NIT DEL PROVEEDOR : ");
@@ -300,6 +303,16 @@ public class Main {
         System.out.println("INGRESA EL CODIGO DEL PRODUCTO A COMPRAR: ");
         String codigoProducto = scanner.nextLine();
 
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date fechaCompra = null;
+
+        try {
+            fechaCompra = dateFormat.parse(fechaCompraStr);
+        } catch (ParseException e) {
+            System.out.println("Fecha de compra no válida. Utiliza el formato yyyy-MM-dd.");
+            return;
+        }
 
         Optional<Producto> productoOptional = administracion.buscarProducto(codigoProducto );
         if (productoOptional.isPresent() ) {
@@ -315,7 +328,7 @@ public class Main {
             productosCompra.setCantidadProducto(productosCompra.getCantidadProducto() + cantidad);
             double valorTotal = valorUnitario * cantidad;
 
-            Compra compra = new Compra(idCompra,nombreProveedor,fechaCompra,valorUnitario,valorTotal,cantidad,nitProveedor, productosCompra);
+            Compra compra = new Compra(idCompra,nombreProveedor,fechaCompra,valorUnitario,valorTotal,cantidad,nitProveedor, Optional.of(productosCompra));
             administracion.agregarCompra(compra);
             System.out.println(compra.toString());
 

@@ -97,44 +97,33 @@ public class Administracion {
                             break;
                         case 3:
                             System.out.println("Eliminar el ID del producto actual.");
-
-                            Producto productoCompra = compraEncontrada.getProductosCompra();
-
-                            if (productoCompra != null) {
-
-                                productoCompra.setCodigoProducto((null));
-
-                                System.out.println("Ingresa el codigo del producto: ");
-                                String codigoProducto  = scanner.nextLine();
-
-                                Optional<Producto> productoOptional = buscarProducto(codigoProducto);
-
-                                if (productoOptional.isPresent() ) {
-                                    Producto productosCompra = productoOptional.get();
-                                    compraEncontrada.setProductosCompra(productosCompra);
-                                    System.out.println(productosCompra);
-
-
-                                    System.out.println("POR FAVOR INGRESA LA CANTIDAD ");
-                                    Double nuevaCantidad = scanner.nextDouble();
-                                    scanner.nextLine();
-
-                                    compraEncontrada.setCantidad(nuevaCantidad);
-                                    productosCompra.setCantidadProducto(productosCompra.getCantidadProducto() + nuevaCantidad);
-
-                                    System.out.println("POR FAVOR INGRESA EL PRECIO UNITARIO");
-                                    Double nuevoPrecio = scanner.nextDouble();
-                                    scanner.nextLine();
-                                    compraEncontrada.setValorUnitario(nuevoPrecio);
-                                    double valorTotal = nuevoPrecio * nuevaCantidad;
-                                    compraEncontrada.setValorTotal(valorTotal);
-
-                                } else {
-                                    System.out.println("Producto con eL ID: " + codigoProducto  + " no encontrado");
-                                }
-
-                            }else{
-                                System.out.println("La compra no tiene un producto asociado.");
+                            // Actualiza la cantidad del producto original
+                            Producto productoOriginal = compraEncontrada.getProductosCompra().orElse(null);
+                            if (productoOriginal != null) {
+                                productoOriginal.setCantidadProducto(productoOriginal.getCantidadProducto() - compraEncontrada.getCantidad());
+                            }
+                            compraEncontrada.setProductosCompra(null); // Establecer como null
+                            System.out.println(" ");
+                            System.out.println("Ingresa el código del producto: ");
+                            String nuevoCodigoProducto = scanner.nextLine();
+                            Optional<Producto> productoNuevoOptional = buscarProducto(nuevoCodigoProducto);
+                            if (productoNuevoOptional.isPresent()) {
+                                Producto productoNuevo = productoNuevoOptional.get();
+                                compraEncontrada.setProductosCompra(Optional.of(productoNuevo));
+                                System.out.println(productoNuevo);
+                                System.out.println("POR FAVOR INGRESA LA CANTIDAD");
+                                Double nuevaCantidad = scanner.nextDouble();
+                                scanner.nextLine();
+                                compraEncontrada.setCantidad(nuevaCantidad);
+                                productoNuevo.setCantidadProducto(productoNuevo.getCantidadProducto() + nuevaCantidad);
+                                System.out.println("POR FAVOR INGRESA EL PRECIO UNITARIO");
+                                Double nuevoPrecio = scanner.nextDouble();
+                                scanner.nextLine();
+                                compraEncontrada.setValorUnitario(nuevoPrecio);
+                                double valorTotal = nuevoPrecio * nuevaCantidad;
+                                compraEncontrada.setValorTotal(valorTotal);
+                            } else {
+                                System.out.println("Producto con el ID: " + nuevoCodigoProducto + " no encontrado");
                             }
                             break;
 
